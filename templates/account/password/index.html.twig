@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container my-5">
+<h1 class="mb-5">Espace de {{ app.user.lastname }}</h1>
+
+        <div class="row">
+            {# colonne des liens #}
+            <div class="col-md-3">
+                {% include ("account/menu.html.twig") %}
+            </div>
+            {# colone des contenus #}
+            <div class="col-md-9">
+                <h5>
+                    Modification du mot de passe
+                </h5>
+
+                {{ form(updatePdw) }}
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+    

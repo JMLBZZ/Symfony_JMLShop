@@ -1,0 +1,67 @@
+{# OFF CANVAS #}
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+            Mon panier
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div>
+            Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+        </div>
+        <div class="dropdown mt-3">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                Dropdown button
+            </button>
+            <ul class="dropdown-menu">
+                <li>
+                    <a class="dropdown-item" href="#">
+                        Action
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#">
+                        Another action
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#">
+                        Something else here
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{# FIN OFF CANVAS #}
+
+
+
+
+<div class="list-group">
+    <button type="button" class="list-group-item list-group-item-action d-flex">
+        <a class="nav-link" href="{{ path("app_account_addresses") }}">
+            <span class="me-3"><i class="bi bi-houses"></i></span>
+            Mes adresses
+        </a>    
+    </button>
+    <button type="button" class="list-group-item list-group-item-action d-flex">
+        <a class="nav-link" href="{{ path("app_account") }}">
+            <span class="me-3"><i class="bi bi-bag-check"></i></span>
+            Mes commandes
+        </a>    
+    </button>
+    <button type="button" class="list-group-item list-group-item-action d-flex">
+        <a class="nav-link" href="{{ path("app_account_updatepwd") }}">
+            <span class="me-3"><i class="bi bi-arrow-repeat"></i></span>
+            Modifier mon mot de passe
+        </a>    
+    </button>
+    <button type="button" class="list-group-item list-group-item-action d-flex">
+        <a class="nav-link" href="{{ path("app_logout") }}">
+            <span class="me-3"><i class="bi bi-x-circle"></i></span>
+            Déconnexion
+        </a>    
+    </button>
+</div>

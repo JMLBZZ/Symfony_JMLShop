@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container my-5">
+        <h1>Connexion</h1>
+        {% if error %}
+            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        <form action="{{ path('app_login') }}" method="post">{# path appel la route app_login#}
+            <label for="username">Votre Email :</label>
+            <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}">{# la value récupère last_username du controller#}
+
+            <label for="password">Votre mot de passe :</label>
+            <input class="form-control" type="password" id="password" name="_password">
+
+            <input type="hidden" name="_target_path" value="{{ path('app_account') }}">
+            {# redirection vers la page des comptes #}
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">{# protège le formulaire contre les injections CSRF (Cross-Site Request Forgery) #}
+
+            <button class="btn btn-dark" type="submit">Connexion</button>
+        </form>
+        <div>
+            <a href="{{ path("app_register") }}">
+                <i data-feather="edit"></i>
+                S'inscrire
+            </a>
+        </div>
+    </div>
+
+{% endblock %}

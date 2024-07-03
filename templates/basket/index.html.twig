@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container my-5">
+
+        <h1 class="mb-5">Mon panier</h1>
+        
+        <div class="row">
+
+            <div class="col-md-8">
+                {% for product in basket %}
+                    <div class="row mb-3">
+                        <hr>
+                            {# {{dump(product)}} #}
+                            <div class="col-md-2">
+                                <img src="/uploads/{{ product.object.image }}" class="img-fluid" alt="{{ product.object.name }}">
+                            </div>
+                            <div class="col-md-5">
+                                <strong>
+                                    {{ product.object.name }}
+                                </strong>
+                                <small class="d-block">
+                                    P.U. :
+                                    {{ product.object.priceTva | pricefilter }}
+                                </small>
+                            </div>
+                            <div class="col-md-3 text-end">
+                                <a href="{{ path("app_basket_reduce", { id : product.object.id }) }}" class="btn btn-dark">-</a>
+                                <span class="mx-2">x{{ product.qty }}</span>
+                                <a href="{{ path("app_basket_add", { id : product.object.id }) }}" class="btn btn-dark">+</a>
+                            </div>
+                            <div class="col-md-2 text-end">
+                                <strong>
+                                    {{ (product.qty * product.object.priceTva) | pricefilter }}
+                                </strong>
+                            {# on fait en premier l'opération puis on applique le filtre  #}
+                            </div>
+                    </div>
+                {% endfor %}
+            <a href="{{ path('app_basket_remove') }}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir vider le panier ?');">Vider le panier</a>
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="bg-light p-3">
+                    <div class="d-flex justify-content-between">
+                        <span class="fw-bold">Total articles : </span>
+                        <span>{{ totalBasketQty }}</span>
+                    </div>
+                </div>
+                <div class="bg-light p-3">
+                    <div class="d-flex justify-content-between">
+                        <span class="fw-bold">Total TTC : </span>
+                        <span>{{ totalPriceTva|pricefilter }}</span>
+                    </div>
+                </div>
+                <div><a href="{{ path("app_order")}}" class="btn btn-success w-100 my-3">Commander</a></div>
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container my-5">
+
+        <h1 class="mb-5">{{ category.name }}</h1>
+
+        <p>Il y a {{ category.products|length }} {{ category.name }}.</p>
+
+        <div class="card-group">
+            {% for product in category.products %}
+                <div class="card">
+                    <img src="/uploads/{{ product.image }}" class="img-fluid card-img-top p-5" alt="{{ product.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            {# RÉGLER LE PROBLÈME DU FILTRE TWIG VIA LA CRÉATION D'UNE EXTENSION TWIG #}
+                            <p class="card-text">{{ product.description|u.truncate(80, "...")|raw }}</p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <small class="text-body-secondary">{{ product.PriceTva | pricefilter }}</small>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <a href="{{ path("app_basket_add", { id : product.id }) }}" type="button" class="btn btn-dark">
+                                <i class="bi bi-bag-plus"></i>
+                            </a>
+                            <a href="{{ path("app_product",{ slug : product.slug}) }}" class="btn btn-dark">
+                                <i class="bi bi-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    {% endblock %}
+    

@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container my-5">
+
+        <h1 class="mb-5">Résumé de la commande</h1>
+        
+        <div class="row">
+
+            <div class="col-md-8">
+                <strong>Contenu du panier</strong><br>
+                {% for product in basket %}
+                    <div class="row mb-3">
+                        <hr>
+                            {# {{dump(product)}} #}
+                            <div class="col-md-2">
+                                <img src="/uploads/{{ product.object.image }}" class="img-fluid" alt="{{ product.object.name }}">
+                            </div>
+                            <div class="col-md-5">
+                                <strong>
+                                    {{ product.object.name }}
+                                </strong>
+                                <small class="d-block">
+                                    P.U. :
+                                    {{ product.object.priceTva | pricefilter }}
+                                </small>
+                            </div>
+                            <div class="col-md-3 text-end">
+                                <span class="mx-2">x{{ product.qty }}</span>
+                            </div>
+                            <div class="col-md-2 text-end">
+                                <strong>
+                                    {{ (product.qty * product.object.priceTva) | pricefilter }}
+                                </strong>
+                            {# on fait en premier l'opération puis on applique le filtre  #}
+                            </div>
+                    </div>
+                {% endfor %}
+                
+                <hr>
+                
+                <strong>Adresse de livraison :</strong><br>
+                {{ choices.addresses.lastname}} {{ choices.addresses.firstname}}
+                {{ choices.addresses.address}}, {{ choices.addresses.postal}} {{ choices.addresses.city}} - {{ choices.addresses.country}}
+                
+                <hr>
+                
+                <strong>Transporteur :</strong><br>
+                {{ choices.carriers.name }} - <small>{{ choices.carriers.description }}</small>
+            </div>
+
+            <div class="col-md-4">
+                <div class="bg-light p-3">
+                    <div class="d-flex justify-content-between">
+                        <span class="fw-bold">Total articles : </span>
+                        <span>{{ totalPriceTva|pricefilter }}</span>
+                    </div>
+                </div>
+                <div class="bg-light p-3">
+                    <div class="d-flex justify-content-between">
+                        <span class="fw-bold">Total transporteur : </span>
+                        <span>{{ choices.carriers.price|pricefilter }}</span>
+                    </div>
+                </div>
+                <div class="bg-light p-3">
+                    <div class="d-flex justify-content-between">
+                        <span class="fw-bold">Total : </span>
+                        <strong>{{ (choices.carriers.price + totalPriceTva)|pricefilter }}</strong>
+                    </div>
+                </div>
+                <div><a href="#" class="btn btn-success w-100 my-3">Payer</a></div>
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}
