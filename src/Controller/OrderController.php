@@ -84,6 +84,7 @@ class OrderController extends AbstractController
             $order -> setCarrierName($form->get("carriers")->getdata()->getName());
             $order -> setCarrierPrice($form->get("carriers")->getdata()->getPrice());
             $order -> setDelivery($address);
+            $order -> setUser($this->getUser());
 
             foreach ($products as $product){
                 //dd($product);

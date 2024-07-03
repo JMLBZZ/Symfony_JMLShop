@@ -38,9 +38,42 @@ class Order
     #[ORM\Column]
     private ?int $state = null;
 
+    #[ORM\ManyToOne(inversedBy: 'orders')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
     public function __construct()
     {
         $this->orderDetails = new ArrayCollection();
+    }
+
+    //Calcul total TTC produits + transporteur
+    public function getTotalPriceTva()
+    {
+        $totalTtc = 0;
+        $products = $this->getOrderDetails();
+
+        foreach($products as $product){
+            $factor = 1 + ($product->getProductTva()/100);
+            $totalTtc += ($product->getProductPrice() * $factor) * $product->getProductQuality();
+        };
+
+        return $totalTtc + $this->getCarrierPrice();
+    }
+
+    //Calcul total TVA
+    public function getTotalTva()
+    {
+        $totalTva = 0;
+        $products = $this->getOrderDetails();
+
+        foreach($products as $product){
+            $factor = $product->getProductTva()/100;
+            $totalTva += $product->getProductPrice() * $factor;
+            //dd($product->getProductPrice() * $factor);
+        };
+
+        return $totalTva;
     }
 
     public function getId(): ?int
@@ -140,6 +173,18 @@ class Order
     public function setState(int $state): static
     {
         $this->state = $state;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

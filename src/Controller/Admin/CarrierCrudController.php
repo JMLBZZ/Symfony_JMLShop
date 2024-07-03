@@ -4,6 +4,8 @@ namespace App\Controller\Admin;
 
 use App\Entity\Carrier;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
@@ -21,7 +23,7 @@ class CarrierCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setEntityLabelInSingular('un transporteur')//nom du label "titre" dans le bouton de création
+            ->setEntityLabelInSingular('Transporteur')//nom du label "titre" dans le bouton de création
             ->setEntityLabelInPlural('Transporteurs')// idem mais dans le corps
             // ...
         ;
@@ -41,6 +43,16 @@ class CarrierCrudController extends AbstractCrudController
                 ->setLabel("Prix (TTC)")
                 ->setHelp("(Prix du transporteur TTC en €)"),
         ];
+    }
+
+    //MODIFICATION ACTIONS
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            ->update(Crud::PAGE_INDEX, Action::NEW, function (Action $action) {
+                return $action->setIcon('fa fa-plus')->setLabel(false);
+            })
+        ;
     }
     /*
     public function configureFields(string $pageName): iterable
