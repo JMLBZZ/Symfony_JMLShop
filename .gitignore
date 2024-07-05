@@ -23,3 +23,14 @@
 /public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###
+
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# OS X
+.DS_Store
+.Spotlight-V100
+.Trashes
+._*
