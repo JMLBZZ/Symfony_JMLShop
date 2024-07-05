@@ -11,9 +11,16 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class BasketController extends AbstractController
 {
-    #[Route('/basket', name: 'app_basket')]
-    public function index(Basket $basket): Response
+    #[Route('/basket/{motif}', name: 'app_basket', defaults:["motif"=>null])]
+    public function index(Basket $basket, $motif): Response
     {
+        if ($motif == "cancel"){
+            $this->addFlash(
+                'warning', // type de notif (couleur success bootstrap)
+                'Paiement annulé!' // message de la notif
+            );
+        }
+        
         return $this->render('basket/index.html.twig', [
             "basket" => $basket->getBasket(),
             "totalPriceTva" => $basket->getTotalPriceTva()

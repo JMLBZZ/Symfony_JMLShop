@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="fairing-success-message">
+        <section class="fairing__banner-image">
+            <img src="/assets/img/merci.svg" alt="" />
+        </section>
+
+        <section class="fairing__banner-text content-box__row text-container">
+            <h2 class="heading-2 os-step__title">
+                Merci pour votre commande
+            </h2>
+            <p class="os-step__description">
+                Votre commande est validée. Vous recevrez vos produits dans les plus brèves délais.
+            </p>
+            <section class="fairing__call-to-action">
+                <a href="{{ path ("app_account_order", {"id_order" : order.id }) }}" class="btn btn--subdued btn--size-small fairing__action fairing__action--submit" referrerpolicy="strict-origin-when-cross-origin">
+                    Consulter ma commande
+                </a>
+        </section>
+        </section>
+
+        <section class="fairing__social-icons">
+            <a href="#" referrerpolicy="strict-origin-when-cross-origin" target="_blank">
+                <img alt="Facebook" src="https://app.fairing.co/images/custom_success_message/icon-social-facebook.svg" />
+            </a>
+            <a href="#" referrerpolicy="strict-origin-when-cross-origin" target="_blank">
+                <img alt="Instagram" src="https://app.fairing.co/images/custom_success_message/icon-social-instagram.svg" />
+            </a>
+            <a href="#" referrerpolicy="strict-origin-when-cross-origin" target="_blank">
+                <img alt="TikTok" src="https://app.fairing.co/images/custom_success_message/icon-social-tiktok.svg" />
+            </a>
+            <a href="#" referrerpolicy="strict-origin-when-cross-origin" target="_blank">
+                <img alt="Tumblr" src="https://app.fairing.co/images/custom_success_message/icon-social-tumblr.svg" />
+            </a>
+            <a href="#" referrerpolicy="strict-origin-when-cross-origin" target="_blank">
+                <img alt="Twitter" src="https://app.fairing.co/images/custom_success_message/icon-social-twitter.svg" />
+            </a>
+            <a href="#" referrerpolicy="strict-origin-when-cross-origin" target="_blank">
+                <img alt="YouTube" src="https://app.fairing.co/images/custom_success_message/icon-social-youtube.svg" />
+            </a>
+        </section>
+
+        <section class="fairing__app-stores">
+            <a href="#" referrerpolicy="strict-origin-when-cross-origin" target="_blank">
+                <img alt="Apple App Store" src="https://app.fairing.co/images/custom_success_message/badge-app_store.svg" />
+            </a>
+            <a href="#" referrerpolicy="strict-origin-when-cross-origin" target="_blank">
+                <img alt="Google Play" src="https://app.fairing.co/images/custom_success_message/badge-google_play.svg" />
+            </a>
+        </section>
+
+        <section class="fairing__call-to-action">
+            <a href="{{ path("app_home") }}" class="btn btn--subdued btn--size-small fairing__action fairing__action--submit" referrerpolicy="strict-origin-when-cross-origin">
+                Accueil
+            </a>
+        </section>
+
+        <style>
+            .fairing-success-message {
+            padding: 1.1428571429em;
+            text-align: center;
+            }
+
+            .fairing-success-message section {
+            margin: 24px 0;
+            }
+
+            .fairing-success-message section:first-of-type,
+            .fairing-success-message section:last-of-type {
+            margin: 0;
+            }
+
+            .fairing-success-message .fairing__banner-image img {
+            margin: 0 auto;
+            max-width: 456px;
+            width: 100%;
+            }
+
+            .fairing-success-message .fairing__social-icons a,
+            .fairing-success-message .fairing__app-stores a {
+            display: inline-block;
+            margin: 0 8px;
+            text-decoration: none;
+            }
+
+            .fairing-success-message .fairing__social-icons img {
+            height: 18px;
+            width: 18px;
+            }
+
+            .fairing-success-message .fairing__app-stores img {
+            height: 24px;
+            }
+
+            .fairing-success-message .fairing__action,
+            .fairing-success-message .fairing__action:link {
+            background-color: #304a57;
+            border-radius: 5px;
+            color: #fff;
+            line-height: 1;
+            padding: 0.9285714286em;
+            text-decoration: none;
+            width: auto;
+            }
+        </style>
+    </div>
+{% endblock %}

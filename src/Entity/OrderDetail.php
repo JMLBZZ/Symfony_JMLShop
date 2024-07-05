@@ -84,6 +84,12 @@ class OrderDetail
         return $this;
     }
 
+    public function getProductPriceTva()
+    {
+        $factor = 1 + ($this->productTva/100);
+        return $factor * $this->productPrice; 
+    }
+
     public function getProductPrice(): ?float
     {
         return $this->productPrice;
