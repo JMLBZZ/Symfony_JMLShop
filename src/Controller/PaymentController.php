@@ -2,12 +2,14 @@
 
 namespace App\Controller;
 
-use App\Class\Basket;
-use App\Repository\OrderRepository;
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\EntityManagerInterface;
 use Stripe\Stripe;
+use App\Class\Mail;
+use App\Entity\User;
+use App\Class\Basket;
 use Stripe\Checkout\Session;
+use Doctrine\ORM\EntityManager;
+use App\Repository\OrderRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -88,6 +90,17 @@ class PaymentController extends AbstractController
     #[Route('order/success/{stripe_session_id}', name: 'app_payment_success')]
     public function success($stripe_session_id, OrderRepository $orderRepository, EntityManagerInterface $entityManagerInterface, Basket $basket): Response
     {
+        // ############################## MAILJET ############################## //
+            $mail = new Mail();
+            $user = new User();
+
+            $vars = [
+                "firstname" => $user->getFirstname(),
+                "lastname" => $user->getLastname(),
+            ];
+            $mail->send("jmlshop@yopmail.com", $user->getLastname()." ".$user->getFirstname(), "Bienvenue sur CAP NATION", "welcome.html", $vars);
+        // ############################ fin de mail ############################ //
+
         $order = $orderRepository->findOneBy([
             "stripe_session_id" => $stripe_session_id,
             "user" => $this->getUser(),

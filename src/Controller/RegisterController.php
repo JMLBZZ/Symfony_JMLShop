@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Class\Mail;
 use App\Entity\User;
 use App\Form\RegisterUserType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -29,6 +30,16 @@ class RegisterController extends AbstractController
                 'success',//type de notif (couleur success bootstrap)
                 'Votre compte est créé! Vous pouvez vous connecter.'//message de la notif
             );
+
+        // ################## Mail de confirmation d'inscription ############### //
+        // ############################## MAILJET ############################## //
+            $mail = new Mail();
+            $vars = [
+                "firstname" => $user->getFirstname(),
+                "lastname" => $user->getLastname(),
+            ];
+            $mail->send($user->getEmail(), $user->getLastname()." ".$user->getFirstname(), "Bienvenue sur CAP NATION", "welcome.html", $vars);
+        // ############################ fin de mail ############################ //
 
             // ... tu rediriges sur la page de login
             return $this->redirectToRoute("app_login");
