@@ -35,6 +35,9 @@ class Product
     #[ORM\ManyToOne(inversedBy: 'products')]
     private ?Category $category = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $isFlagship = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -127,6 +130,18 @@ class Product
     public function setCategory(?Category $category): static
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function isFlagship(): ?bool
+    {
+        return $this->isFlagship;
+    }
+
+    public function setIsFlagship(?bool $isFlagship): static
+    {
+        $this->isFlagship = $isFlagship;
 
         return $this;
     }

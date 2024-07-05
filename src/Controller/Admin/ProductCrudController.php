@@ -12,6 +12,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -48,6 +49,9 @@ class ProductCrudController extends AbstractCrudController
             TextField::new('name')
                 ->setLabel("Nom")
                 ->setHelp("(Nom du produit)"),
+            BooleanField::new('isFlagship')
+                ->setLabel("Produit à la une")
+                ->setHelp("(Affiche le produit vedette sur la page d'accueil)"),
             SlugField::new('slug')->setTargetFieldName("name")
                 ->setLabel("URL")
                 ->setTargetFieldName("name")//copie le champs "nom" pour le slug
