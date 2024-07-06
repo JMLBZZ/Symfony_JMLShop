@@ -12,7 +12,7 @@ class ProductController extends AbstractController
     #[Route('/product/{slug}', name: 'app_product')]
     public function index($slug, ProductRepository $productRepository): Response
     {
-        $product = $productRepository->findOneBySlug($slug);//findOneByNomdelapropriétédel'entité = va afficher la propriété de l'entité product
+        $product = $productRepository->findOneBySlug($slug);
 
         if (!$product) {//si catégorie n'existe pas, alors...
             return $this->redirectToRoute("app_home");

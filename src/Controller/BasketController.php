@@ -75,7 +75,8 @@ class BasketController extends AbstractController
     #[Route('/basket/remove', name: 'app_basket_remove')]
     public function remove(Basket $basket): Response
     {
-        $basket->remove(); // et le passe en paramètre de la fonction remove
+        $basket->remove();
+
         $this->addFlash(
             'success', // type de notif (couleur success bootstrap)
             'Le panier est vide !' // message de la notif

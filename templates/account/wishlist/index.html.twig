@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container my-5">
+<h1 class="mb-5">Espace de {{ app.user.lastname }}</h1>
+
+        <div class="row">
+            {# colonne des liens #}
+            <div class="col-md-3">
+                {% include ("account/menu.html.twig") %}
+            </div>
+            {# colone des contenus #}
+            <div class="col-md-9">
+                <h5>Ma liste ({{app.user.wishlists|length}})</h5>
+                    {% if app.user.wishlists|length > 0 %}
+                    <div class="row">
+                    {% for product in app.user.wishlists %}
+                        <div class="col-md-3 text-center">
+                            <a href="{{ path('app_product', { slug : product.slug } ) }}" class="text-decoration-none">
+                                <img src="/uploads/{{ product.image }}" class="img-fluid">
+                                <span class="d-block fw-bold text-black">{{ product.name }}</span>
+                            </a>
+                            <span class="d-block">{{ product.priceTva|pricefilter }}</span>
+                            <a href="{{ path('app_account_wishlist_remove', { id : product.id } ) }}" class="small text-secondary">Supprimer</a>
+                        </div>
+                    {% endfor %}
+                </div>
+                    {% else %}
+                        Aucun produit en favoris.
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+    

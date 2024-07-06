@@ -17,7 +17,36 @@
                     <h1>{{ product.name }}</h1>
                     <span class="d-block mb-3">{{ product.PriceTva | pricefilter }}</span>
                     {{ product.description | raw }}
-                    <a href="{{ path("app_basket_add", { id : product.id }) }}" type="button" class="btn btn-dark w-100 mt-3">Ajouter au panier</a>
+                    <div class="d-flex align-items-center justify-content-between mt-3">
+                        <a href="{{ path("app_basket_add", { id : product.id }) }}" type="button" class="btn btn-dark w-100">Ajouter au panier</a>
+                        
+                        {# BOUTON FAVORIS #}
+                        {% if app.user %}
+                            {% if product in app.user.wishlists %}
+                                <a href="{{ path("app_account_wishlist_remove", {id : product.id})}}" class="fav-icon-active ms-3">
+                                    <i data-feather="heart"></i>
+                                </a>
+                            {% else %}
+                                <a href="{{ path("app_account_wishlist_add", {id : product.id})}}" class="fav-icon ms-3">
+                                    <i data-feather="heart"></i>
+                                </a>
+                            {% endif %}
+
+                        {% else %}
+                            <a href="#collapseExample" class="ms-3" data-bs-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample">
+                                <i data-feather="heart"></i>
+                            </a>
+                        {% endif %}
+
+                    </div>
+
+                    {# Collapse Heart favori #}
+                    <div class="collapse mt-3" id="collapseExample">
+                        <div class="">
+                            Pour enregistrer en favoris, veuillez vous <a href="{{ path("app_login")}}">connecter</a> ou vous <a href="{{ path("app_register")}}">inscrire</a>.
+                        </div>
+                    </div>
+
 
 
                 </div>

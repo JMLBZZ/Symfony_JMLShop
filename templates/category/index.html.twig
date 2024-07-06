@@ -10,6 +10,24 @@
         <div class="card-group">
             {% for product in category.products %}
                 <div class="card">
+                    <div class="text-end mx-3 mt-2">
+                        {% if app.user %}
+                            {% if product in app.user.wishlists %}
+                                <a href="{{ path("app_account_wishlist_remove", {id : product.id})}}" class="fav-icon-active ms-3">
+                                    <i data-feather="heart"></i>
+                                </a>
+                            {% else %}
+                                <a href="{{ path("app_account_wishlist_add", {id : product.id})}}" class="fav-icon ms-3">
+                                    <i data-feather="heart"></i>
+                                </a>
+                            {% endif %}
+
+                        {% else %}
+                            <a href="#collapseExample" class="ms-3" data-bs-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample">
+                                <i data-feather="heart"></i>
+                            </a>
+                        {% endif %}
+                    </div>
                     <img src="/uploads/{{ product.image }}" class="img-fluid card-img-top p-5" alt="{{ product.name }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ product.name }}</h5>
@@ -26,6 +44,7 @@
                             <a href="{{ path("app_product",{ slug : product.slug}) }}" class="btn btn-dark">
                                 <i class="bi bi-eye"></i>
                             </a>
+                            
                         </div>
                     </div>
                 {% endfor %}

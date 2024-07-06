@@ -4,7 +4,7 @@
     <div class="container my-5">
 
         <h1 class="mb-5">
-            Espace de
+            Espace de 
             {{ app.user.lastname }}
         </h1>
 
@@ -107,6 +107,7 @@
                     </tfoot>
                 </table>
                 <div class="text-end">
+                    <a href="{{ path ("app_invoice_customer", {id_order : order.id })}}" class="btn btn-outline-dark btn-sm" target="_blank">Facture</a>
                     <a href="{{ path ("app_account")}}" class="btn btn-outline-dark btn-sm">Retour</a>
                 </div>
             </div>

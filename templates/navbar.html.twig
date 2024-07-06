@@ -26,8 +26,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_account') }}">
                             {# <i data-feather="user"></i> #}
-                        <i class="bi bi-person-circle"> {{ app.user.lastname }}</i>
-                            {# affiche le nom de l'utilisateur #}
+                            <i class="bi bi-person-circle">
+                                {{ app.user.lastname }}
+                            </i>
+                        {# affiche le nom de l'utilisateur #}
                         </a>
                     </li>
 
@@ -37,35 +39,44 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                <a class="dropdown-item" href="{{ path('app_account') }}">
-                                    <i class="bi bi-houses"> </i>
+                                <a class="dropdown-item" href="{{ path('app_account_addresses') }}">
+                                    <i class="bi bi-houses"></i>
                                     Mes adresses
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="{{ path('app_account') }}">
-                                    <i class="bi bi-bag-check"> </i>
+                                    <i class="bi bi-bag-check"></i>
                                     Mes commandes
                                 </a>
                             </li>
                             <li>
+                                <a class="dropdown-item" href="{{ path('app_account_wishlist') }}">
+                                    <i class="bi bi-heart"></i>
+                                    Mes favoris
+                                </a>
+                            </li>
+                            <li>
                                 <a class="dropdown-item" href="{{ path('app_account_updatepwd') }}">
-                                    <i class="bi bi-arrow-repeat"> </i>
+                                    <i class="bi bi-arrow-repeat"></i>
                                     Modifier mon mot de passe
                                 </a>
                             </li>
                             <li>
-                                <hr class="dropdown-divider"></li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ path('app_logout') }}">
-                                        <i class="bi bi-x-circle"> Déconnexion</i>
-                                        
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{{ path('app_logout') }}">
+                                    <i class="bi bi-x-circle">
+                                        Déconnexion
+                                    </i>
+
+                                </a>
+                            </li>
+                        </ul>
                     </li>
-                    {% else %}
+                </li>
+                {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_login') }}">
                             <i data-feather="user"></i>
@@ -73,21 +84,23 @@
                     </li>
                 {% endif %}
 
-                    {# <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                            <i class="bi bi-basket"></i>
-                        </a>
-                    </li> #}
-                    <li class="nav-item">
-                        <a class="btn" href="{{ path('app_basket') }}">
-                            <i class="bi bi-basket"></i>
-                            <span class="badge rounded-pill bg-danger">
-                                {{ totalBasketQty }}
-                                <span class="visually-hidden">unread messages</span>
+                {# <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                    <i class="bi bi-basket"></i>
+                    </a>
+                </li> #}
+                <li class="nav-item">
+                    <a class="btn" href="{{ path('app_basket') }}">
+                        <i class="bi bi-basket"></i>
+                        <span class="badge rounded-pill bg-danger">
+                            {{ totalBasketQty }}
+                            <span class="visually-hidden">
+                                unread messages
                             </span>
-                        </a>
-                    </li>
-                    
+                        </span>
+                    </a>
+                </li>
+
             </ul>
         </div>
     </div>
