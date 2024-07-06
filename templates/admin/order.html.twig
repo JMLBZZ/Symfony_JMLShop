@@ -1,18 +1,28 @@
 {% extends "@!EasyAdmin/layout.html.twig" %}
 
 {% block main %}
-
-    <h3>Commande n°{{ order.id }}</h3>
     
+    <h3>Commande n°{{ order.id }}</h3>
     <div class="mt-3">
         <strong>Date : </strong>
         {{ order.createdAt|date("d/m/Y")}}
     </div>
-
     <div class="mt-3">
         <strong>Statut : </strong>{{ include("admin/state.html.twig", {field : { value : order.state }} ) }} {# à l'intérieur de field, on à la clé value qui à l'order.state #}
-
     </div>
+    <hr>
+
+    {% if order.state != 1 %}
+        <h5>Modifier le status de la commande :</h5>
+        <a class="{% if order.state == 3 %}d-none{% endif %} btn btn-secondary me-1" href="{{ current_url }}&state=3">En préparation</a>
+        <a class="{% if order.state == 4 %}d-none{% endif %} btn btn-primary me-1" href="{{ current_url }}&state=4">Expédiée</a>
+        <a class="{% if order.state == 5 %}d-none{% endif %} btn btn-danger me-1" href="{{ current_url }}&state=5">Annulée</a>
+    {% endif %}
+    <hr>
+
+
+
+
 
     
     <div class="row my-3">

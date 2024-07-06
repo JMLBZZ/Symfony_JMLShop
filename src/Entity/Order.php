@@ -166,7 +166,9 @@ class Order
         type de valeur d'état du setstate: 
             1 = en attente du paiement (ou panier abandonné)
             2 = paiement validé
-            3 = commande expédiée
+            3 = en cours de prérparation
+            4 = commande expédiée
+            5 = commande annulé
     */
     public function getState(): ?int
     {
