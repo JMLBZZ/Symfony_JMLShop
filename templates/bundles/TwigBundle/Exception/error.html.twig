@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container my-5">
+
+        {% if status_code == 404 %}
+            <div class="row">
+                <div class="col-md-6 align-self-center">
+                    <img class="img-fluid" src="https://image.spreadshirtmedia.com/image-server/v1/products/T1040A70PA2252PT32X0Y5D1017194366W12395H5319/views/1,width=1200,height=1200,appearanceId=71,backgroundColor=F2F2F2,modelId=1789,crop=detail/error-code-404-trucker-cap.jpg" alt="Error 404 - Page not found">
+                </div>
+                <div class="col-md-6 align-self-center">
+                    <h1>{{ status_code }}</h1>
+                    <h2>HOLY CAP! Vous êtes perdu.</h2>
+                    <p>
+                        The page you are looking for does not exist. How you got here is a mystery. But you can click the button below to go back to the homepage.
+                    </p>
+                    
+                    <a href="{{ path('app_home') }}">
+                        <button class="btn btn-dark">Accueil</button>
+                    </a>
+                </div>
+            </div>
+            {% elseif status_code == 403 %}
+                <div class="row">
+                    <div class="col-md-6 align-self-center">
+                        <img class="img-fluid" src="https://image.spreadshirtmedia.com/image-server/v1/products/T1040A54PA2252PT32X18Y0D1016633467W8790H6489/views/1,width=650,height=800,appearanceId=71,backgroundColor=F2F2F2,modelId=1789,crop=detail/danger-zone-baseball-cap.jpg" alt="Error 403 - Access Denied">
+                    </div>
+                    <div class="col-md-6 align-self-center">
+                        <h1>{{ status_code }}</h1>
+                        <h2>HOLY CAP! Accès non authorisé.</h2>
+                        <p>
+                            The page you are looking for does not exist. How you got here is a mystery. But you can click the button below to go back to the homepage.
+                        </p>
+                        
+                        <a href="{{ path('app_home') }}">
+                            <button class="btn btn-dark">Accueil</button>
+                        </a>
+                    </div>
+                </div>
+            {% else %}
+                <div class="row">
+                    <div class="col-md-6 align-self-center">
+                        <img class="img-fluid" src="https://image.spreadshirtmedia.com/image-server/v1/products/T1040A70PA2252PT14X14Y19D1017112394W9616H2696C13/views/1,width=1200,height=1200,appearanceId=71,backgroundColor=F2F2F2,modelId=1789,crop=detail/error-trucker-cap.jpg" alt="Error">
+                    </div>
+                    <div class="col-md-6 align-self-center">
+                        <h1>{{ status_code }}</h1>
+                        <h2>HOLY CAP! Une erreur est survenue.</h2>
+                        <p>
+                            The page you are looking for does not exist. How you got here is a mystery. But you can click the button below to go back to the homepage.
+                        </p>
+                        
+                        <a href="{{ path('app_home') }}">
+                            <button class="btn btn-dark">Accueil</button>
+                        </a>
+                    </div>
+                </div>
+        {% endif %}
+
+    </div>
+{% endblock %}

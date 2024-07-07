@@ -40,25 +40,25 @@
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
                                 <a class="dropdown-item" href="{{ path('app_account_addresses') }}">
-                                    <i class="bi bi-houses"></i>
+                                    <i class="bi bi-houses me-3"></i>
                                     Mes adresses
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="{{ path('app_account') }}">
-                                    <i class="bi bi-bag-check"></i>
+                                    <i class="bi bi-bag-check me-3"></i>
                                     Mes commandes
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="{{ path('app_account_wishlist') }}">
-                                    <i class="bi bi-heart"></i>
+                                    <i class="bi bi-heart me-3"></i>
                                     Mes favoris
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="{{ path('app_account_updatepwd') }}">
-                                    <i class="bi bi-arrow-repeat"></i>
+                                    <i class="bi bi-arrow-repeat me-3"></i>
                                     Modifier mon mot de passe
                                 </a>
                             </li>
@@ -66,8 +66,19 @@
                                 <hr class="dropdown-divider">
                             </li>
                             <li>
+                                {% if is_granted ("ROLE_ADMIN") %}
+                                    <a class="dropdown-item" href="{{ path('admin') }}">
+                                        <i class="bi bi-person-gear me-3"></i>
+                                        Espace administrateur
+                                    </a>
+                                {% endif %}
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
                                 <a class="dropdown-item" href="{{ path('app_logout') }}">
-                                    <i class="bi bi-x-circle">
+                                    <i class="bi bi-x-circle me-3">
                                         Déconnexion
                                     </i>
 
