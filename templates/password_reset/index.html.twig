@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1>Réinitialisation du mot de passe</h1>
+            {{ form(passwordResetForm) }}
+        <div>
+            Vous avez déjà un compte, 
+            <a href="{{ path("app_login") }}">
+                connectez vous !
+            </a>
+        </div>
+    </div>
+{% endblock %}

@@ -19,12 +19,16 @@
 
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">{# protège le formulaire contre les injections CSRF (Cross-Site Request Forgery) #}
 
-            <button class="btn btn-dark" type="submit">Connexion</button>
+            <button class="btn btn-dark mt-3" type="submit">Connexion</button>
         </form>
         <div>
             <a href="{{ path("app_register") }}">
                 <i data-feather="edit"></i>
                 S'inscrire
+            </a>
+            <a href="{{ path("app_resetpwd") }}">
+                <i data-feather="edit"></i>
+                Mot de passe oublié
             </a>
         </div>
     </div>
