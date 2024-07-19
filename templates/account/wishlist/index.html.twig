@@ -21,7 +21,7 @@
                                 <span class="d-block fw-bold text-black">{{ product.name }}</span>
                             </a>
                             <span class="d-block">{{ product.priceTva|pricefilter }}</span>
-                            <a href="{{ path('app_account_wishlist_remove', { id : product.id } ) }}" class="small text-secondary">Supprimer</a>
+                            <a href="{{ path('app_account_wishlist_remove', { id : product.id } ) }}"><i class="bi bi-heartbreak-fill text-danger"></i></a>
                         </div>
                     {% endfor %}
                 </div>

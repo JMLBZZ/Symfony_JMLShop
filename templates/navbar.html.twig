@@ -65,17 +65,17 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li>
-                                {% if is_granted ("ROLE_ADMIN") %}
+                            {% if is_granted ("ROLE_ADMIN") %}
+                                <li>
                                     <a class="dropdown-item" href="{{ path('admin') }}">
                                         <i class="bi bi-person-gear me-3"></i>
                                         Espace administrateur
                                     </a>
-                                {% endif %}
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                            {% endif %}
                             <li>
                                 <a class="dropdown-item" href="{{ path('app_logout') }}">
                                     <i class="bi bi-x-circle me-3">

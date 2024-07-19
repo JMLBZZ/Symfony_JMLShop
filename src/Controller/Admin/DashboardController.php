@@ -44,7 +44,9 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Cap Nation - DashBoard');
+            //->setTitle('Cap Nation - DashBoard');
+            ->setTitle('<img src="/assets/img/logo-cap-red.svg" alt="Cap Nation" style="height: 50px;"> Dashboard');
+
     }
 
     public function configureMenuItems(): iterable
@@ -56,6 +58,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Produits', 'fas fa-hat-cowboy', Product::class);
         yield MenuItem::linkToCrud('Transporteurs', 'fas fa-truck', Carrier::class);
         yield MenuItem::linkToCrud('Commandes', 'fas fa-box', Order::class);
-        yield MenuItem::linkToCrud('Header', 'fas fa-images', Header::class);
+        yield MenuItem::linkToCrud('Bannière', 'fas fa-images', Header::class);
+        yield MenuItem::linkToRoute('Site - CAP NATION', 'fas fa-circle-left', 'app_home');
+
     }
 }

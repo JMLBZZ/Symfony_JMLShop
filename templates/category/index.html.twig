@@ -32,7 +32,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ product.name }}</h5>
                             {# RÉGLER LE PROBLÈME DU FILTRE TWIG VIA LA CRÉATION D'UNE EXTENSION TWIG #}
-                            <p class="card-text">{{ product.description|u.truncate(80, "...")|raw }}</p>
+                            <p class="card-text">{{ product.description |u.truncate(80, "...") |raw }}</p>
                         </div>
                         <div class="card-footer text-center">
                             <small class="text-body-secondary">{{ product.PriceTva | pricefilter }}</small>

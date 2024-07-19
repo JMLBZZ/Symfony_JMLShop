@@ -36,7 +36,7 @@ class PasswordResetController extends AbstractController
             $this->addFlash(
                 'success', // type de notif (couleur success bootstrap)
                 "Si votre compte existe, vous recevrez un mail de réinitialisation d'une durée de 30 minutes.<br/>
-                Sinon, veuillez refaire la demande de réinitialisation où de créer un compte." // message de la notif
+                Sinon, veuillez refaire la demande de réinitialisation ou de créer un compte." // message de la notif
             );
 
             if($user){

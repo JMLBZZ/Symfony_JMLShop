@@ -44,7 +44,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var Collection<int, Address>
      */
-    #[ORM\OneToMany(targetEntity: Address::class, mappedBy: 'user')]
+    #[ORM\OneToMany(targetEntity: Address::class, mappedBy: 'user', cascade:["remove"])]
     private Collection $addresses;
 
     /**
