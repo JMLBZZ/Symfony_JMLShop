@@ -68,7 +68,7 @@ class PasswordUserType extends AbstractType
 
                 // condition pour les erreurs
                 if (!$isValid){
-                    $form->get("actualPassword")->addError(new FormError("Votre mot de passe n'est pas bonne. veuillez resaisir le bon mot de passe."));
+                    $form->get("actualPassword")->addError(new FormError("Votre mot de passe n'est pas bonne. Veuillez resaisir le bon mot de passe."));
                 }
             })
         ;

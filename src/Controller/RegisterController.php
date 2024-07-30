@@ -17,12 +17,12 @@ class RegisterController extends AbstractController
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
-        $form = $this->createForm(RegisterUserType::class, $user);
+        $form = $this->createForm(RegisterUserType::class, $user);//va chercher le formulaire "RegisterUserType" et crée le!
 
-        $form->handleRequest($request);
+        $form->handleRequest($request);//écoute la request pour aller plus loin
 
         if ($form->isSubmitted() && $form->isValid()){//si le formulaire est soumis et valide, alors...
-            $entityManager->persist($user);// ... tu persistes les données (objets en liens avec l'entité) et,
+            $entityManager->persist($user);// ... tu persistes les données ($user = objets en liens avec l'entité) et,
             $entityManager->flush();//... tu enregistres les données dans la DB
 
             // ... tu affiches l'alert

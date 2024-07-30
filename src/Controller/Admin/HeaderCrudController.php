@@ -20,8 +20,8 @@ class HeaderCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setEntityLabelInSingular('Carousel')//nom du label "titre" dans le bouton de création
-            ->setEntityLabelInPlural('Images')// idem mais dans le corps
+            ->setEntityLabelInSingular('Bannière')//nom du label "titre" dans le bouton de création
+            ->setEntityLabelInPlural('Bannière')// idem mais dans le corps
             // ...
         ;
     }
@@ -40,7 +40,7 @@ class HeaderCrudController extends AbstractCrudController
             TextField::new('buttonLink', "Url du bouton"),
             ImageField::new("image")
                 ->setLabel("Image")
-                ->setHelp("Image Background du carousel header")
+                ->setHelp("Image arrière plan de la bannière promotionnelle")
                 ->setUploadDir("/public/uploads")//enregistre l'image dans le dossier "uploads"
                 ->setUploadedFileNamePattern("[year][month][day]-[timestamp]-[contenthash].[extension]")//rename le fichier uploadé
                 ->setBasePath("/uploads")//affiche l'image dasn le chemin
